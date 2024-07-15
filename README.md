@@ -80,4 +80,8 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 # chat_app
+<<<<<<< HEAD
 >>>>>>> bd5eaf2 (first commit)
+=======
+# chat_app
+>>>>>>> a039f4f (first commit)
