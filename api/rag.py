@@ -26,7 +26,7 @@ from langchain import hub
 class RAG():
     def __init__(self, local=True):
         if not local:
-            os.environ["OPENAI_API_KEY"] = "sk-proj-4VB8Y9qADQGEtD6fgPHjT3BlbkFJH9pmuoo56twYeq5So4tY"
+            os.environ["OPENAI_API_KEY"] = "xxx"
             self.llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
             self.llm_embedding =OpenAIEmbeddings()
         else:
