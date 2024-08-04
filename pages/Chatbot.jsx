@@ -1,92 +1,40 @@
-// Sidenav.jsx
-"use client"; // Add this line at the top of your file
-import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
-import { MdChat } from 'react-icons/md';
+// pages/Chatbot.jsx
+import React, { useEffect } from 'react';
 
-function Chatbot() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [message, setMessage] = useState('');
-    const [chats, setChats] = useState([]);
-    const [isTyping, setIsTyping] = useState(false);
-    const messagesEndRef = useRef(null);
-
+const Chatbot = () => {
     useEffect(() => {
-        axios.post('http://localhost:5328/api/clear_memory')
-            .then(response => console.log('Memory cleared on refresh'))
-            .catch(error => console.error('Failed to clear memory', error));
+        // Append the Dialogflow widget script to the document head
+        const script = document.createElement('script');
+        script.src = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js";
+        script.async = true;
+        document.head.appendChild(script);
+
+        // Append the Dialogflow widget stylesheet to the document head
+        const link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css";
+        document.head.appendChild(link);
     }, []);
 
-    useEffect(() => {
-        if (messagesEndRef.current) {
-            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, [chats]);
-
-    const toggleChat = () => {
-        if (isOpen) {
-            setChats([]); // Clear all chat history when closing the chat window
-        }
-        setIsOpen(!isOpen);
-    };
-
-    const chat = async (event) => {
-        event.preventDefault();
-        console.log('Form submitted');
-        if (!message) {
-            console.log('No message to send');
-            return;
-        }
-
-        setIsTyping(true);
-        const updatedChats = [...chats, { role: "user", content: message }];
-        setChats(updatedChats);
-
-        try {
-            console.log('Sending message:', message);
-            const response = await axios.post('http://localhost:5328/api/process_question', { question: message });
-            console.log("Received response:", response.data);
-            setChats(currentChats => [...currentChats, { role: "Liang's assistant", content: response.data.answer }]);
-        } catch (error) {
-            console.error("Error:", error);
-        } finally {
-            setIsTyping(false);
-            setMessage(''); // Clear the message input after sending
-        }
-    };
-
     return (
-        <div className="chat-container">
-            <button onClick={toggleChat} className={`toggle-chat-btn ${isOpen ? '' : 'hidden'}`}>
-                <MdChat size={30} color="white" />
-            </button>
-
-            {isOpen && (
-                <div className="chat-window">
-                    <button onClick={toggleChat} className="close-btn">X</button>
-                    <h1 className="chat-title">Ask me about Liang Ou</h1>
-                    <div className="messages">
-                        {chats.map((chat, index) => (
-                            <p key={index} className={chat.role === "user" ? "user-msg" : "assistant-msg"}>
-                                <b>{chat.role.toUpperCase()}</b>: {chat.content}
-                            </p>
-                        ))}
-                        <div ref={messagesEndRef} />
-                    </div>
-                    {isTyping && <p className="typing-indicator">Typing...</p>}
-                    <form onSubmit={chat} className="chat-form">
-                        <input
-                            type="text"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            placeholder="Type a message here and hit Enter..."
-                        />
-                        {/* <button type="submit">Send</button> */}
-                    </form>
-                </div>
-            )}
+        <div className="fixed bottom-4 right-4 z-50">
+            <df-messenger
+                project-id="tutorial1-431206"
+                agent-id="d8a01e06-8969-4c7d-8d7a-1b5fa88433bc"
+                language-code="en"
+                max-query-length="-1"
+                style={{
+                    '--df-messenger-font-color': '#000',
+                    '--df-messenger-font-family': 'Google Sans',
+                    '--df-messenger-chat-background': '#f3f6fc',
+                    '--df-messenger-message-user-background': '#d3e3fd',
+                    '--df-messenger-message-bot-background': '#fff'
+                }}
+            >
+                <df-messenger-chat-bubble chat-title="Liang's Assistant" className="text-black"></df-messenger-chat-bubble>
+            </df-messenger>
         </div>
     );
-}
+};
 
 export default Chatbot;
