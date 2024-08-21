@@ -19,8 +19,8 @@ const Chatbot = () => {
     return (
         <div className="fixed bottom-4 right-4 z-50">
             <df-messenger
-                project-id="crack-future-431113-k6"
-                agent-id="bfabb305-ebdb-4442-9fd4-67ce52697dfc"
+                project-id="ace-server-251114"
+                agent-id="63864f4d-951a-45c2-ab06-70e3fa2854c9"
                 language-code="en"
                 max-query-length="-1"
                 style={{
