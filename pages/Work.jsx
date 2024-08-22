@@ -7,7 +7,7 @@ const data = [
         title: 'Machine Learning Engineer',
         duration: '5 Years',
         details:
-            'Translated research findings into industrial (defense, healthcare) project products, including a $3 million AI solution for Brain-Robot Interaction. Managed and supervised students, designing of over 10 scenarios for a drive simulation motion platform for research.',
+            'Translated research findings into industrial (defense, healthcare) project products, including a $3 million AI solution for Brain-Robot Interaction. Managed and supervised students, designing of over 10 scenarios for a drive simulation motion platform. Developed a chatbot with RAG for assisting nurse with RAG and prompt engineering.',
     },
     {
         year: 2022,

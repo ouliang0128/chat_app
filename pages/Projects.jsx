@@ -15,7 +15,7 @@ export const Projects = () => {
                 <ProjectItems img={arxImg} title='Brain Robot Interaction (BRI)' />
                 <ProjectItems img={xAIImg} title='Explainable AI (xAI)' />
                 <ProjectItems img={mpImg} title='Human Autonomy Teaming (HAT)' />
-                <ProjectItems img={LLMImg} title='Explainable Large Langurage Models (FuzzyXT)' />
+                <ProjectItems img={LLMImg} title='Carebot with Large Langurage Models' />
             </div>
         </div>
     )
