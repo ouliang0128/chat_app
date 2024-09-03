@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProjectItems } from './ProjectItems'
-import xAIImg from '../public/breakout.gif'
+import xAIImg from '../public/dog.png'
 import arxImg from '../public/arx.jpg'
 import mpImg from '../public/Motion_platform.jpg'
 import LLMImg from '../public/fuzzyxt.svg'
