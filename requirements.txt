@@ -1,13 +1,13 @@
-numpy
-Flask
-flask-cors
-langchain-chroma
-langchain
-langchain-community
-langchainhub
-langchain-openai
-pypdf
-# pysqlite3
-llama-cpp-python
-sentence-transformers
-mlflow
+# numpy
+# Flask
+# flask-cors
+# langchain-chroma
+# langchain
+# langchain-community
+# langchainhub
+# langchain-openai
+# pypdf
+# # pysqlite3
+# llama-cpp-python
+# sentence-transformers
+# mlflow
